@@ -1,0 +1,3 @@
+# Le webhook Wave est appelé par Wave, sans connexion utilisateur : la signature Wave le protège.
+[functions.wave-webhook]
+verify_jwt = false
