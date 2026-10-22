@@ -56,9 +56,9 @@ body.auth aside,body.auth .mb{display:none}body.auth main{max-width:none}.tabs{d
 <div id="toast" role="status"></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
 <script>
-const SUPABASE_URL='https://VOTRE-PROJET.supabase.co',SUPABASE_KEY='sb_publishable_ar7Zw4haPE5pJfzwVcTJBw_Wy0jElr3';
+const SUPABASE_URL='https://https://qmflzodtavaeqhfizzfb.supabase.co',SUPABASE_KEY='sb_secret_5gQ3WrfWgK-u-b5KI1cEWg_EvBhQKnu';
 const PRIX_ACTIVATION=120000,PRIX_MENSUEL=40000; // à garder identique à price_of() dans schema.sql
-const PAY_INFOS=[['Wave','+225 00 00 00 00 00']]; // paiement manuel de secours : votre vrai numéro Wave
+const PAY_INFOS=[['Wave','+225 07 49 36 55 45']]; // paiement manuel de secours : votre vrai numéro Wave
 const $=s=>document.querySelector(s),sbar=$('#sb');
 const NAV=[['dash','▦','Dashboard','a'],['new','⊕','Créer une commande','a'],['orders','🛍','Mes commandes','a'],['drv','👥','Mes livreurs','a'],['rep','🧾','Rapport des encaissements','a'],['sub','💳','Abonnement','a'],['valid','✅','Paiements à valider','p'],['mine','🛵','Mes livraisons','d'],['prof','◉','Mon profil','ad'],['fb','💬','Feedback','ad']];
 let sb,me=null,drivers=[],orders=[],cur='dash',chan=null,sub=null,payments=[],isPA=false;
