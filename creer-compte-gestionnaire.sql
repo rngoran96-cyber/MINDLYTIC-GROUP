@@ -1,18 +1,17 @@
 -- Gôly Express : crée VOTRE compte gestionnaire et lui donne le droit de valider les paiements.
--- 1) Modifiez les 5 valeurs ci-dessous. 2) Collez tout dans Supabase > SQL Editor > Run.
+-- Collez tout dans Supabase > SQL Editor > Run. Les valeurs ci-dessous sont déjà remplies.
 -- Ce compte a un abonnement gratuit jusqu'en 2099 (c'est votre compte, il ne paie pas).
 -- Si le script échoue à la création de l'utilisateur, créez le compte avec « Créer un compte »
 -- dans l'application (même email), puis relancez ce script : il reprend le compte existant.
 do $$
 declare
-  v_email    text := 'rngoran96@email.com';        -- MODIFIEZ
-  v_password text := 'pharel';  -- MODIFIEZ (à changer ensuite dans « Mon profil »)
-  v_prenom   text := 'Prénom';Romaric  -- MODIFIEZ
-  v_nom      text := 'Nom'; N'GORAN' -- MODIFIEZ
-  v_tel      text := '+225 0759206755';    -- MODIFIEZ
+  v_email    text := 'rngoran96@email.com';
+  v_password text := 'pharel';       -- à changer ensuite dans « Mon profil » (choisissez plus long)
+  v_prenom   text := 'Romaric';
+  v_nom      text := 'N''GORAN';
+  v_tel      text := '+225 0759206755';
   v_uid uuid;
 begin
-  if v_email = 'rngoran96@email.com' then raise exception 'Modifiez d''abord v_email, v_password, v_prenom, v_nom et v_tel'; end if;
   v_email := lower(trim(v_email));
   select id into v_uid from auth.users where email = v_email;
 

@@ -56,7 +56,7 @@ body.auth aside,body.auth .mb{display:none}body.auth main{max-width:none}.tabs{d
 <div id="toast" role="status"></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
 <script>
-const SUPABASE_URL='https://https://qmflzodtavaeqhfizzfb.supabase.co',SUPABASE_KEY='sb_secret_5gQ3WrfWgK-u-b5KI1cEWg_EvBhQKnu';
+const SUPABASE_URL='https://qmflzodtavaeqhfizzfb.supabase.co',SUPABASE_KEY='sb_publishable_ar7Zw4haPE5pJfzwVcTJBw_Wy0jElr3'; // clé « Publishable » (sb_publishable_...) ou « anon » — JAMAIS la clé secret/service_role
 const PRIX_ACTIVATION=120000,PRIX_MENSUEL=40000; // à garder identique à price_of() dans schema.sql
 const PAY_INFOS=[['Wave','+225 07 49 36 55 45']]; // paiement manuel de secours : votre vrai numéro Wave
 const $=s=>document.querySelector(s),sbar=$('#sb');
@@ -140,7 +140,7 @@ async function chgPw(){const a=$('#p1').value;if(a.length<6)return toast('Mot de
 async function sendFb(){const m=$('#fm').value.trim();if(!m)return toast('Écrivez un message');const{error}=await sb.from('feedback').insert({type:$('#ft').value,message:m});if(error)return fail(error);toast('Merci pour votre retour');go(me.role=='admin'?'dash':'mine')}
 function csv(){const L=window.RL||[];if(!L.length)return toast('Aucune donnée à exporter');const r=[['N°','Client','Livreur','Paiement','Montant','Statut'],...L.map(o=>[o.id,o.client_nom,dn(o.livreur_id),o.mode_paiement=='COD'?'COD':'Électronique',o.prix_produit+o.prix_livraison,o.statut])];const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+r.map(x=>x.join(';')).join('\n')],{type:'text/csv'}));a.download='encaissements.csv';a.click()}
 (async()=>{
-if(SUPABASE_URL.includes('VOTRE-PROJET')){show(gate('Configuration requise','Ouvrez index.html et remplacez SUPABASE_URL et SUPABASE_KEY en haut du script (voir LISEZMOI.md).'));return}
+if(SUPABASE_URL.includes('VOTRE-PROJET')||SUPABASE_KEY.includes('COLLEZ-ICI')||SUPABASE_KEY.startsWith('sb_secret_')){show(gate('Configuration requise','Ouvrez index.html et mettez la clé publique (publishable ou anon) dans SUPABASE_KEY. N’utilisez jamais la clé secret.'));return}
 sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 const{data:{session}}=await sb.auth.getSession();
 sb.auth.onAuthStateChange(ev=>{if(ev=='SIGNED_OUT'&&me){me=null;landing()}});
