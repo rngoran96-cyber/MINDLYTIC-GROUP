@@ -1,4 +1,4 @@
--- Gôly Express : crée VOTRE compte gestionnaire et lui donne le droit de valider les paiements.
+-- MindLiv : crée VOTRE compte gestionnaire et lui donne le droit de valider les paiements.
 -- Collez tout dans Supabase > SQL Editor > Run. Les valeurs ci-dessous sont déjà remplies.
 -- Ce compte a un abonnement gratuit jusqu'en 2099 (c'est votre compte, il ne paie pas).
 -- Si le script échoue à la création de l'utilisateur, créez le compte avec « Créer un compte »
@@ -33,7 +33,7 @@ begin
   end if;
 
   insert into public.profiles (id, role, prenom, nom, tel, entreprise, email)
-  values (v_uid, 'admin', v_prenom, v_nom, v_tel, 'Gôly Express', v_email)
+  values (v_uid, 'admin', v_prenom, v_nom, v_tel, 'MindLiv', v_email)
   on conflict (id) do nothing;
 
   insert into public.subscriptions (admin_id, setup_paid, paid_until)
